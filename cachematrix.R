@@ -1,15 +1,31 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-
+     inverse <- matrix()                       ## Creating variable for storing inverse...
+     ## By default inverse will have NAs
+     setmatrix <- function(y){                 ## Storing the Matrix in X
+          x <<- y 
+          m <<- matrix()                          ## Variable for inverse
+     }
+     getmatrix <- function() x                 ## Function to get the value of Matrix
+     setinverse <- function(inverse) m <<- inverse ## Function to store the value of inverse
+     getinverse <- function() inverse          ## Function to get value of inverse
+     list(setmatrix = setmatrix, getmatrix = getmatrix,
+          setinverse = setinverse,             ## List which returns all the above
+          getinverse = getinverse)
 }
 
 
-## Write a short comment describing this function
+
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+     ## Returns a matrix that is the inverse of 'x'
+     m <- x$getinverse()                       ## Getting the value of inverse....
+     if(!is.na(m)) {                           ## Checking whether m is empty matrix 
+          message("getting inverse of required matrix")
+          return(m)                               ## if m is not empty, its value is returned, X
+     }                                         ## Otherwise, it is computed in following lines
+     data <- x$getmatrix()                     ## Getting Matrix Data
+     m <- solve(data, ...)                     ## Solving for inverse of required matrix
+     x$setinverse(m)                           ## Storing that inverse value in m
+     m                                         ## Returning the inverse matrix m
 }
