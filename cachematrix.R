@@ -1,4 +1,6 @@
-
+#######################################################################
+############ Describing Each Steps as it goes!!########################
+#######################################################################
 makeCacheMatrix <- function(x = matrix()) {
      inverse <- matrix()                       ## Creating variable for storing inverse...
      ## By default inverse will have NAs
